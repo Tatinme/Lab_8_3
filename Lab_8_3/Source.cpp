@@ -15,6 +15,7 @@ int main()
 		case ' ': case '\n': case '\t':
 			nwhite++;
 			break;
+
 		default:
 			nother++;
 			break;
