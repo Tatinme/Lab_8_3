@@ -1,29 +1,33 @@
 #include <stdio.h>
+#include <conio.h>
+
 
 int main()
 {
-	int i, nwhite = 0, nother = 0;
-	int ndigit[10] = { 0 };
+	int znaki[128] = { 0 };
+	char tekst[10];
 
-	int c;
-	while ((c = getchar()) != EOF) {
-		switch (c) {
-		case '0': case '1': case '2': case '3': case '4':
-		case '5': case '6': case '7': case '8': case '9':
-			ndigit[c - '0']++;
-			break;
-		case ' ': case '\n': case '\t':
-			nwhite++;
-			break;
+	fgets(tekst, 10, stdin);
+	fputs(tekst, stdout);
 
-		default:
-			nother++;
-			break;
-		}
+	for (int i = 0; i < 10; i++)
+	{
+		znaki[tekst[i]]++;
 	}
-	printf("\ndigits:\n");
-	for (i = 0; i < 10; i++) printf("'%d' = %d\n", i, ndigit[i]);
-	printf("white space = %d\nother =  %d\n", nwhite, nother);
+
+	for (int i = 1; i < 128; i++)
+	{
+		if (znaki[i] == 0) continue;
+		if (i == 32) { printf("\nZnak: spacja: %d", i, znaki[i]); }
+		else
+		{
+			printf("\nZnak: %c: %d", i, znaki[i]);
+		}
+
+	}
+
+
+	_getch();
 	return 0;
 }
 
